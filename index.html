@@ -1,63 +1,100 @@
-
 <!doctype html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LLY的网站首页</title>
-  <style type="text/css">
+<head>
+	<meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: "楷体";
+        }
+        header{
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://si1.go2yd.com/get-image/0r24Ln6QYFK");
+            height: 100vh;	/*使图片占满屏幕*/
+            background-size: cover;
+            background-position: center;
+        }
     
-	h1{
-     text-align:center;
-	}
-    body{
-	 font-size:25px;
-	 margin: 0 ;
-	 background-image:url("https://d.ifengimg.com/q100/img1.ugc.ifeng.com/newugc/20200803/20/wemedia/7584c0e6dad99094e2c87daff494647ba5a7d4e1_size619_w720_h559.png");
-	}
-    p{
-	  font-size:40px;
-	  text-align:center;
-	}
-	ul{
-	 margin:0 ;
-	 background-color:rgb(200,200,250);
-	 font-size:1.5em;
-	}
-    ul li{
-	 display:inline-block;
-	 color:white;
-	 margin:0.2em 0.5em;
-	 background-color:white;
-	}
-   li{
-    cursor:pointer;
-   }
-   li:hover{
-    background-color:rgb(0,0,255);
-	color:white;
-   }
-   a{
-	text-align:center;
-   }
-  </style>
- </head>
- <body>
-  <h1>
-   lly的个人网站
-  </h1>
-  <p>
-   点击下面的按钮查看我的作业
-  </p>
-  <ul>     
-   <li></li>
-   <li><a href="https://lly1797456943.github.io/01.html">第1次</a></li>
-   <li><a href="https://lly1797456943.github.io/02.html">第2次</a></li>
-   <li><a href="https://lly1797456943.github.io/03.html">第3次</a></li>
-   <li><a href="https://lly1797456943.github.io/04.html">第4次</a></li>
-   <li><a href="https://lly1797456943.github.io/05.html">第5次</a></li>
-   <li><a href="https://lly1797456943.github.io/06.html">第6次</a></li>
-  </ul>
- 
- </body>
+        ul{
+            float:left;
+            list-style-type: none;/*去除li标签默认属性的标记*/
+            margin: 15px;
+        }
+        ul li{
+            display: inline-block;/*在元素之后不添加换行符，因此该元素可以位于其他元素旁边，实现水平显示列表项*/
+			
+        }
+    
+        ul li a{
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 30px;
+            border: 1px solid transparent;/*使边框颜色透明*/
+            transition: .6s ease;/*设置过度效果*/
+            border-radius: 20px;/*设置圆角*/
+        }
+		ul li a:hover{		/*鼠标悬停在li的a上时的样式*/
+            background-color: #00c;
+            color: #000;
+        }
+
+        ul li.active a{
+            background-color: #fff;
+            color: #000;
+        }	
+
+		/*设置标题文字位置及样式*/
+        .title{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+        .title h1{
+            color: #fff;
+            font-size: 70px;
+            font-family: Century Gothic;
+        }
+		ul li select{
+			font-size:16px;
+			text-decoration: none;
+			
+            color: #000;
+            padding: 5px 10px;
+            border: 1px solid transparent;/*使边框颜色透明*/
+            transition: .6s ease;/*设置过度效果*/
+            border-radius: 20px;/*设置圆角*/
+		}
+		ul li select:hover{		/*鼠标悬停在li的select上时的样式*/
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="main">
+            <ul>
+                <li class="active"><a href="#">首页</a></li>
+                <li><a target="_blank">简介</a></li>
+                <li>
+					<select onchange="window.open(this.options[this.selectedIndex].value)">
+						<option value='#'>作业</option>
+						<option value='01.html'>第一次</option>
+						<option value='02.html'>第二次</option>
+						<option value='03.html'>第三次</option>
+						<option value='04.html'>第四次</option>
+						<option value='05.html'>第五次</option>
+					</select>
+                </li>
+                <li><a target="_blank">个人</a></li>
+            </ul>
+        </div>
+        <div class="title">
+            <h1><span style="color: crimson;">我的</span>首页</h1>
+        </div>
+    </header>
+</body>
 </html>
