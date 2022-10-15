@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  	body{
+		text-align:20px;
+	}
+	h1{
+		text-align:center;
+	}
+    div input{
+		width:160px;
+		height:20px;
+	}
+	div input.answer{
+		text-align: 1em;
+		margin: 1em;
+		border-radius: 20px;/* 设置圆角 */
+		border: 1px solid #f00;
+	}
+	/* 鼠标悬停在div的input上时的样式 */
+	div input.answer:hover{
+		background-color: #ccffff;
+		color: #000;
+	}
+	
+	div input#opNum1{
+		margin-left: 6%;
+	} 
+	div span#a{
+		margin-left: 6%;
+	}
+    div input#right{
+    	margin-left: 6%;
+		color:#00f;
+    }
+  </style>
+ </head>
+ <body>
+ 	<h1>20以内的加法题</h1>
+ 	<div id= 'qustion'>
+		<input id = opNum1> +
+		<input id = opNum2> = ？
+	</div>
+ 	<div id= 'answer'>
+		<span id ='a'>A.</span><input id = 'answerA' class = 'answer' value = "20">
+		B.<input id = 'answerB' class = 'answer' value = "20">
+		C.<input id = 'answerC' class = 'answer' value = "20">
+		D.<input id = 'answerD' class = 'answer' value = "20">
+	</div>
+	<div>
+		<input id = 'right' value = "">
+	</div>
+	<script type="text/javascript">
+		var opNum1 = parseInt( 10 * Math.random());
+		var opNum2 = parseInt( 10 * Math.random());
+		//定义一个随机数确定正确答案的位置
+		var Num = parseInt( 3 * Math.random()+1);
+		//把id等于opNum1的input标签抓过来
+		var opNum1Dom = document.querySelector("input#opNum1");
+		var opNum2Dom = document.querySelector("input#opNum2");
+		//把id等于answer的div标签中的全部input标签抓过来，并且是存在数组answerDoms[]中
+		var answerDoms = document.querySelectorAll("div#answer input");
+			//把随机数opNum1赋值给按钮input#opNum1中
+			opNum1Dom.value = opNum1;
+			opNum2Dom.value = opNum2;
+			//定义确定答案
+			var right = opNum1 + opNum2;
+			for(var i=0 ; i < 4 ; i++ ){
+				if(i === Num ){
+					answerDoms[i].value = right;
+					//定义点击按钮后的事件
+					answerDoms[i].onclick = function(){
+					var rightDom = document.querySelector("input#right");
+					var x = "选择正确，正确答案是:"+right;
+					rightDom.value = x;
+					}
+				}
+				else{
+					var answer = parseInt( 20 * Math.random());
+					if(answer != Num){
+						answerDoms[i].value = answer;
+						}
+					answerDoms[i].onclick = function(){
+					var rightDom = document.querySelector("input#right");
+					var x = "选择错误，正确答案是:"+right;
+					rightDom.value = x;
+					}
+				}
+			}
+	</script>
+ </body>
+</html>
