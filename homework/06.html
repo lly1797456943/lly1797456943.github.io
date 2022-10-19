@@ -5,7 +5,6 @@
   <title>Document</title>
   <style>
   	body{
-		text-align:20px;
 	}
 	h1{
 		text-align:center;
@@ -13,8 +12,15 @@
     div input{
 		width:160px;
 		height:20px;
+		text-align:center;
+	}
+	div input.qustion{
+		width:60px;
+		height:20px;
 	}
 	div input.answer{
+		width:60px;
+		height:20px;
 		text-align: 1em;
 		margin: 1em;
 		border-radius: 20px;/* 设置圆角 */
@@ -29,10 +35,13 @@
 	div input#opNum1{
 		margin-left: 6%;
 	} 
-	div span#a{
+	div span{
 		margin-left: 6%;
 	}
-    div input#right{
+    div input#tip{
+		font-size:20px;
+		width:290px;
+		height:40px;
     	margin-left: 6%;
 		color:#00f;
     }
@@ -41,55 +50,82 @@
  <body>
  	<h1>20以内的加法题</h1>
  	<div id= 'qustion'>
-		<input id = opNum1> +
-		<input id = opNum2> = ？
+		<input id = opNum1 class='qustion'> +
+		<input id = opNum2 class='qustion'> = ？
 	</div>
  	<div id= 'answer'>
-		<span id ='a'>A.</span><input id = 'answerA' class = 'answer' value = "20">
+		<span>A.</span><input id = 'answerA' class = 'answer' value = "20">
 		B.<input id = 'answerB' class = 'answer' value = "20">
 		C.<input id = 'answerC' class = 'answer' value = "20">
 		D.<input id = 'answerD' class = 'answer' value = "20">
 	</div>
 	<div>
-		<input id = 'right' value = "">
+		<input id = 'tip' value = '请做出你的选择'>
 	</div>
+
 	<script type="text/javascript">
-		var opNum1 = parseInt( 10 * Math.random());
-		var opNum2 = parseInt( 10 * Math.random());
-		//定义一个随机数确定正确答案的位置
-		var Num = parseInt( 3 * Math.random()+1);
-		//把id等于opNum1的input标签抓过来
-		var opNum1Dom = document.querySelector("input#opNum1");
-		var opNum2Dom = document.querySelector("input#opNum2");
-		//把id等于answer的div标签中的全部input标签抓过来，并且是存在数组answerDoms[]中
-		var answerDoms = document.querySelectorAll("div#answer input");
-			//把随机数opNum1赋值给按钮input#opNum1中
-			opNum1Dom.value = opNum1;
-			opNum2Dom.value = opNum2;
-			//定义确定答案
-			var right = opNum1 + opNum2;
-			for(var i=0 ; i < 4 ; i++ ){
-				if(i === Num ){
-					answerDoms[i].value = right;
-					//定义点击按钮后的事件
-					answerDoms[i].onclick = function(){
-					var rightDom = document.querySelector("input#right");
-					var x = "选择正确，正确答案是:"+right;
-					rightDom.value = x;
-					}
-				}
-				else{
-					var answer = parseInt( 20 * Math.random());
-					if(answer != Num){
-						answerDoms[i].value = answer;
-						}
-					answerDoms[i].onclick = function(){
-					var rightDom = document.querySelector("input#right");
-					var x = "选择错误，正确答案是:"+right;
-					rightDom.value = x;
-					}
+		//抓2个题目框的浏览器对象
+		var num1dom=document.querySelector("input#opNum1");
+		var num2dom=document.querySelector("input#opNum2");
+		//抓4个选项框的浏览器对象
+		var doms=document.querySelectorAll("div#answer input");
+		//抓提升框的浏览器对象
+		var tipdom=document.querySelector("input#tip");
+
+		var num1=parseInt(21*Math.random());
+		var num2=parseInt(21*Math.random());
+		var num=num1+num2;
+
+		num1dom.value=num1;//把2个20以内的随机数传给题目框
+		num2dom.value=num2;
+
+		//创建1个数组存放4个20以内的不重复的随机数
+		var arr1=new Array();
+		//创建1个数组存放4个零到三的不重复的随机数，作为arr1[]的索引实现答案随机
+		var arr2=new Array();
+		//把正确答案先存入数组arr1[]中
+		arr1.push(num);
+
+		//产生3个零到四十不重复的随机数
+		while(arr1.length<4){   
+			var anwser=parseInt(41*Math.random());
+			choose(arr1,anwser,41);
+		}
+
+		//产生4个不重复的零到四的随机数
+		while(arr2.length<4){
+			var b=parseInt(4*Math.random());
+			choose(arr2,b,4);
+		}
+
+		//把数组中的数据随机赋值给4个选项
+		for(i=0;i<4;i++){
+			doms[i].value=arr1[arr2[i]];
+			if(doms[i].value==num){
+				doms[i].onclick=function(){
+					tipdom.value="答案正确，正确答案是："+num;
 				}
 			}
+			else{
+				doms[i].onclick=function(){
+					tipdom.value="答案错误！，正确答案是："+num;
+				}
+			}
+		}
+   
+		//产生一个与数组中的数都不相等的随机数,参数分别为数组 随机数 范围
+		function choose(arr,ch,q){
+			for(j=0;j<4;j++){
+				if(ch===arr[j]){
+					ch=parseInt(q*Math.random());
+					return;
+				}
+				if(arr==null){
+					arr.push(ch);
+				}
+			}
+			arr.push(ch);
+		}
 	</script>
  </body>
 </html>
