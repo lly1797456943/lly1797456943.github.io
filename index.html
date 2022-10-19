@@ -22,8 +22,8 @@
         ul{
             list-style-type: none;/*去除li标签默认属性的标记*/
             margin: 30px;
-			position: absolute;
-            left:50%;
+			position: absolute;/*定义标题的位置*/
+            left:60%;
             transform: translate(-50%) scale(1.2);
         }
         ul li{
@@ -34,7 +34,7 @@
         ul li a{
             text-decoration: none;
             color: #fff;
-            padding: 10px 30px;
+            padding: 8px 20px;
             border: 1px solid transparent;/*使边框颜色透明*/
             transition: .6s ease;/*设置过度效果*/
             border-radius: 20px;/*设置圆角*/
@@ -50,17 +50,17 @@
         }
 			
 		/*设置标题文字位置及样式*/
-        .title{
+        div.title{
             position: absolute;
             top:4%;
             left:4%;
         }
-        .title h1{
+        div.title h1{
             color: #fff;
             font-size: 60px;
             font-family: Century Gothic;
         }
-		.title h2{
+		div.title h2{
             color: #fff;
             font-size: 20px;
             font-family: Century Gothic;
@@ -68,7 +68,7 @@
 		p{
 			position: absolute;
             top:24%;
-            left:24%;
+            left:15%;
 			color: #ff0066;
             font-size: 20px;
             font-family: Century Gothic;
@@ -89,7 +89,6 @@
 		     color: #000;
 		}
     </style>
-
 </head>
 <body>
     <header>
@@ -98,7 +97,7 @@
                 <li><a target="_blank">首页</a></li>
 				<li><a target="_blank">简介</a></li>
 				<li><a target="_blank">我的音乐</a></li>
-				<li><a href="D:/手机相册/js图片/QR.jpg" target="_blank">我的二维码</a></li>
+				<li><a href="D:/手机相册/js图片/QR.jpg" target="_blank">二维码</a></li>
                 <li>		
 					<select onchange="window.open(this.options[this.selectedIndex].value)">
 						<option value='#'>作业</option>
@@ -109,8 +108,7 @@
 						<option value='homework/05.html'>第五次</option>
 						<option value='homework/06.html'>第六次</option>
 					</select>					
-                </li>
-                <li><a target="_blank">个人</a></li>
+                </li>       
             </ul>
         </div>
         <div class="title">
@@ -119,7 +117,7 @@
         </div>
     </header>
 	<div>
-	<p><span>我的音乐</span><br>
+	<p><span><strong>我的音乐</strong></span><br>
 	我和我的钢琴是最好的伙伴。<br>
 	没有家人陪伴的日子，我用手指在琴键上敲出一个个充满温暖的琴音。<br>
 	我也爱流行。<br>
