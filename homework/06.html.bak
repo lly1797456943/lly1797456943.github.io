@@ -145,7 +145,7 @@
 			}
 		}
    
-		//设置点击下一题按钮的事件,直接刷新本页面
+		//设置点击下一题按钮的事件
 		reloaddom.onclick = function(){
 			window.location.reload();
 		}
