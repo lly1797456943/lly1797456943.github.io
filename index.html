@@ -70,6 +70,7 @@
             top:24%;
             left:15%;
 			color: #ff0066;
+			background-image:url=("https://ts1.cn.mm.bing.net/th/id/R-C.377a563ac5b022fcd0c5fecee0c76474?rik=Kg%2bwK%2b99xcMEBA&riu=http%3a%2f%2fscpic.chinaz.net%2ffiles%2fpic%2fpic9%2f201903%2fbpic11086.jpg&ehk=SknsVctZH4Vq7HY31aPfP8iIj2l8KGqkZA%2b6BqxODpo%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1");
             font-size: 20px;
             font-family: Century Gothic;
 			line-height:2em;
@@ -94,12 +95,12 @@
     <header>
         <div class="main">
             <ul>
-                <li><a target="_blank">首页</a></li>
-				<li><a target="_blank">简介</a></li>
-				<li><a target="_blank">我的音乐</a></li>
+                <li><a target="_parent">首页</a></li>
+				<li><a target="_parent">简介</a></li>
+				<li><a target="_parent">我的音乐</a></li>
 				<li><a href="D:/手机相册/js图片/QR.jpg" target="_blank">二维码</a></li>
                 <li>		
-					<select onchange="window.open(this.options[this.selectedIndex].value)">
+					<select onchange="window.open(this.options[this.selectedIndex].value,target='_parent')" >
 						<option value='#'>作业</option>
 						<option value='homework/01.html'>第一次</option>
 						<option value='homework/02.html'>第二次</option>
@@ -107,6 +108,7 @@
 						<option value='homework/04.html'>第四次</option>
 						<option value='homework/05.html'>第五次</option>
 						<option value='homework/06.html'>第六次</option>
+						<option value='homework/07.html'>第七次</option>
 					</select>					
                 </li>       
             </ul>
