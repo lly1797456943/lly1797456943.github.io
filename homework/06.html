@@ -59,6 +59,15 @@
 		background-color: #ccffff;
 		color: #000;
 	 }
+	 /*定义返回按钮的格式*/
+	 input#return{
+	    font-size:20px;
+		width:60px;
+		height:40px;
+		position:absolute;
+		left:0px;
+		top:0px;
+	}
     </style>
 
  </head>
@@ -80,6 +89,7 @@
 	<div>
 		<input id = 'next' value = '下一题'>
 	</div>
+	<input type = "button" id = "return" value = "返回" onclick = ""></input>
 
 	<script type="text/javascript">
 		//抓2个题目框的浏览器对象
@@ -161,6 +171,10 @@
 
 			}//end of for
 		}//end of app()
+		var returnDom = document.querySelector("input#return");
+		returnDom.onclick = function(){
+			history.back();
+		};
 
 	</script>
  </body>

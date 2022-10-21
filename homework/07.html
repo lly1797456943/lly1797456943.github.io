@@ -24,6 +24,15 @@
 	p span#n4{
 		color:orange;
 	}
+	input#return{
+	    font-size:20px;
+		width:60px;
+		height:40px;
+		position:absolute;
+		left:0px;
+		top:0px;
+	}
+		
 </style>
 
 </head>
@@ -36,9 +45,7 @@
 		<span id="n3">00</span>
 		<span id="n4">00</span>
 	</p>
-	<input type = "button" id = "return" value = "返回" onclick = "">
-
-	</input>
+	<input type = "button" id = "return" value = "返回" onclick = ""></input>
 
 	<script type ="text/javascript">
 		function randNums(){
@@ -66,9 +73,9 @@
 				randomDoms[i].textContent = array[i];
 			}
 		},1000);
-		var returnDom = document.querySelector("input#return");
 
 		//返回主页
+		var returnDom = document.querySelector("input#return");
 		returnDom.onclick = function(){
 			history.back();
 		};
