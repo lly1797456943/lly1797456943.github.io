@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>彩票中奖号码</title>
+<style type="text/css">
+	h1{
+		text-align:center;
+	}
+	p span{
+		font-size:35px;
+		margin:10px;
+	}
+	p span#n1{
+		color:red;
+		margin-left:40%;/*使4个号码居中*/
+	}
+	p span#n2{
+		color:blue;
+	}
+	p span#n3{
+		color:green;
+	}
+	p span#n4{
+		color:orange;
+	}
+</style>
+
+</head>
+
+<body>
+	<h1>随机生成彩票中奖号码</h1>
+	<p>
+		<span id="n1">00</span>
+		<span id="n2">00</span>
+		<span id="n3">00</span>
+		<span id="n4">00</span>
+	</p>
+	<input type = "button" id = "return" value = "返回" onclick = "">
+
+	</input>
+
+	<script type ="text/javascript">
+		function randNums(){
+			var s = '';
+			for(var i = 0;i < 2; i++){
+			s += randNum();
+			}
+			return s;
+
+			function randNum(){
+			return Math.floor(Math.random() * 10);
+			}
+		}//randNums()结束
+
+		var array=[];//中奖号码
+
+		setInterval(function(){
+			for(i = 0;i < 4; i++){
+				array[i] = randNums();
+			}
+
+			var randomDoms = document.querySelectorAll('p span');
+
+			for(i = 0;i < 4; i++){
+				randomDoms[i].textContent = array[i];
+			}
+		},1000);
+		var returnDom = document.querySelector("input#return");
+
+		//返回主页
+		returnDom.onclick = function(){
+			history.back();
+		};
+
+	</script>
+</body>
+
+</html>

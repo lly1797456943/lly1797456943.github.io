@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style>
-  	body{
-	}
-	h1{
-		text-align:center;
-	}
-    div input{
+   <meta charset="UTF-8">
+   <title>加法题</title>
+   <style>
+     body{
+	 	font-size:20px
+	 }
+	 h1{
+		 text-align:center;
+	 }
+     div input{
+	 	font-size:1.5em;
 		width:160px;
 		height:20px;
 		text-align:center;
-	}
-	div input.qustion{
-		width:60px;
-		height:20px;
-	}
-	div input.answer{
-		width:60px;
-		height:20px;
-		text-align: 1em;
+	 }
+	 div input.qustion{
+		width:80px;
+		height:40px;
+	 }
+	 div input.answer{
+		width:80px;
+		height:40px;
 		margin: 1em;
 		border-radius: 20px;/* 设置圆角 */
 		border: 1px solid #f00;
-	}
-	/* 鼠标悬停在div的input.answer上时的样式 */
-	div input.answer:hover{
+	 }
+	 /* 鼠标悬停在div的input.answer上时的样式 */
+	 div input.answer:hover{
 		background-color: #ccffff;
 		color: #000;
-	}
+	 }
 	
-	div input#opNum1{
-		margin-left: 6%;
-	} 
-	div span{
-		margin-left: 6%;
-	}
-    div input#tip{
-		font-size:20px;
-		width:290px;
+	 div input#opNum1{
+		margin-left: 38%;
+	 } 
+	 div span{
+		margin-left: 15%;
+	 }
+     div input#tip{
+		font-size:1.5em;
+		width:400px;
 		height:40px;
-    	margin-left: 6%;
+    	margin-left:28%;
 		color:#00f;
-    }
-	div input#reload{
-		font-size:20px;
-		width:80px;
+     }
+	 div input#next{
+		font-size:1.5em;
+		width:120px;
 		height:40px;
 		margin-top:10px;
-    	margin-left: 16%;
+    	margin-left:40%;
 		color:#00f;
-    }
-	/* 鼠标悬停在div的reload上时的样式 */
-	div input#reload:hover{
+     }
+	 /* 鼠标悬停在div的reload上时的样式 */
+	 div input#next:hover{
 		background-color: #ccffff;
 		color: #000;
-	}
-  </style>
+	 }
+    </style>
+
  </head>
  <body>
  	<h1>20以内的加法题</h1>
  	<div id= 'qustion'>
-		<input id = opNum1 class='qustion'> +
-		<input id = opNum2 class='qustion'> = ？
+		<input id = opNum1 class='qustion' value = "20"> +
+		<input id = opNum2 class='qustion' value = "20"> = ？
 	</div>
  	<div id= 'answer'>
 		<span>A.</span><input id = 'answerA' class = 'answer' value = "20">
@@ -76,79 +78,90 @@
 		<input id = 'tip' value = '请做出你的选择'>
 	</div>
 	<div>
-		<input id = 'reload' value = '下一题'>
+		<input id = 'next' value = '下一题'>
 	</div>
 
 	<script type="text/javascript">
 		//抓2个题目框的浏览器对象
-		var num1dom = document.querySelector("input#opNum1");
-		var num2dom = document.querySelector("input#opNum2");
+		var num1Dom = document.querySelector("input#opNum1");
+		var num2Dom = document.querySelector("input#opNum2");
 		//抓4个选项框的浏览器对象
-		var doms = document.querySelectorAll("div#answer input");
+		var numDoms = document.querySelectorAll("div#answer input");
 		//抓提升框的浏览器对象
-		var tipdom = document.querySelector("input#tip");
+		var tipDom = document.querySelector("input#tip");
 		//抓下一题框的浏览器对象
-		var reloaddom = document.querySelector("input#reload");
+		var nextDom = document.querySelector("input#next");
 
-		var num1 = parseInt(21*Math.random());
-		var num2 = parseInt(21*Math.random());
-		var num = num1 + num2;
+		app();
 
-		num1dom.value = num1;//把2个20以内的随机数传给题目框
-		num2dom.value = num2;
-
-		//创建1个数组存放4个20以内的不重复的随机数
-		var arr1=new Array();
-		//创建1个数组存放4个零到三的不重复的随机数，作为arr1[]的索引实现答案随机
-		var arr2=new Array();
-		//把正确答案先存入数组arr1[]中
-		arr1.push(num);
-
-		//产生3个零到四十不重复的随机数
-		while(arr1.length<4){   
-			var anwser = parseInt(41*Math.random());
-			choose(arr1,anwser,41);
+		//点击下一题时的事件
+		nextDom.onclick = function(){
+			app();
 		}
 
-		//产生4个不重复的零到四的随机数
-		while(arr2.length<4){
-			var b = parseInt(4*Math.random());
-			choose(arr2,b,4);
-		}
+		function app(){
+			var num1 = parseInt(21 * Math.random());
+			var num2 = parseInt(21 * Math.random());
+			var num = num1 + num2;//定义正确答案
 
-		//产生一个与数组中的数都不相等的随机数,参数分别为数组 随机数 范围
-		function choose(arr,ch,q){
-			for(j = 0;j < 4;j++){
-				if(ch === arr[j]){
-					ch = parseInt(q*Math.random());
+			num1Dom.value = num1;//把2个20以内的随机数传给题目框
+			num2Dom.value = num2;
+
+			//创建1个数组存放4个20以内的不重复的随机数
+			var arr1=new Array();
+			//创建1个数组存放4个零到三的不重复的随机数，作为arr1[]的索引实现答案随机
+			var arr2=new Array();
+			//把正确答案先存入数组arr1[]中
+			arr1.push(num);
+
+			//产生3个零到四十不重复的随机数
+			while(arr1.length < 4){   
+				var anwser = parseInt(41*Math.random());
+				choose(arr1,anwser,41);
+			}
+
+			//产生4个不重复的零到四的随机数
+			while(arr2.length < 4){
+				var b = parseInt(4 * Math.random());
+				choose(arr2,b,4);
+			}
+
+			//产生一个与数组中的数都不相等的随机数,参数分别为数组 随机数 范围
+			function choose(arr,ch,q){
+				for(j = 0;j < 4;j++){
+
+					if(ch === arr[j]){
+						ch = parseInt(q*Math.random());
 					return;
-				}
-				if(arr == null){
-					arr.push(ch);
-				}
-			}
-			arr.push(ch);
-		}
+					}
 
-		//把数组中的数据随机赋值给4个选项,并设置点击4个框的事件
-		for(i=0;i<4;i++){
-			doms[i].value = arr1[arr2[i]];
-			if(doms[i].value == num){
-				doms[i].onclick = function(){
-					tipdom.value = "答案正确，正确答案是："+num;
+					if(arr == null){
+					arr.push(ch);
+					}
+
+				}//end of for
+				arr.push(ch);
+			}//end of choose
+
+			//把数组中的数据随机赋值给4个选项,并设置点击4个框的事件
+			for(i = 0;i < 4; i++){
+
+				numDoms[i].value = arr1[arr2[i]];
+
+				if(numDoms[i].value == num){
+					numDoms[i].onclick = function(){
+						tipDom.value = "答案正确，正确答案是："+num;
+					}
 				}
-			}
-			else{
-				doms[i].onclick = function(){
-					tipdom.value = "答案错误！，正确答案是："+num;
+				else{
+					numDoms[i].onclick = function(){
+						tipDom.value = "答案错误！，正确答案是："+num;
+					}
 				}
-			}
-		}
-   
-		//设置点击下一题按钮的事件,直接刷新本页面
-		reloaddom.onclick = function(){
-			window.location.reload();
-		}
+
+			}//end of for
+		}//end of app()
+
 	</script>
  </body>
 </html>
