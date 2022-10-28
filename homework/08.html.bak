@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>探索</title>
+  <style>
+  	input{
+  	width:200px;
+  }
+  </style>
+ </head>
+ <body>
+  <input id = "math1" value = "null" type="button">
+  </br>
+  <input id = "math2" value = "null">
+  </br>
+  <input id = "tip" value = "null">
+  <script type="text/javascript">
+  	var x = Math.pow(2,64);
+	var math1dom = document.querySelector("input#math1");
+	math1dom.value = x;
+
+	var y = Math.pow(2,64)-1500;
+	var math2dom = document.querySelector("input#math2");
+	math2dom.value = y;
+
+	var z = (x===y);
+	var tipdom = document.querySelector("input#tip");
+	tipdom.value = z;
+  </script>
+ </body>
+</html>
