@@ -5,8 +5,17 @@
   <title>探索</title>
   <style>
   	input{
-  	width:200px;
-  }
+  		width:200px;
+	}
+
+	input#return{
+	    font-size:20px;
+		width:60px;
+		height:40px;
+		position:absolute;
+		left:40%;
+		top:0px;
+	}
   </style>
  </head>
  <body>
@@ -15,6 +24,9 @@
   <input id = "math2" value = "null" type="button">
   </br>
   <input id = "tip" value = "null" type="button">
+
+  <input type = "button" id = "return" value = "返回" onclick = ""></input>
+
   <script type="text/javascript">
   	var x = Math.pow(2,64);
 	var math1dom = document.querySelector("input#math1");
@@ -27,6 +39,12 @@
 	var z = (x===y);
 	var tipdom = document.querySelector("input#tip");
 	tipdom.value = z;
+
+	//添加返回主页事件
+	var returnDom = document.querySelector("input#return");
+	returnDom.onclick = function(){
+		history.back();
+	};
   </script>
  </body>
 </html>
