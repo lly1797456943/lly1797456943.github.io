@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+	<style >
+		div{
+			background-color:rgba(100,100,100,0.1);
+			border-radius:100%;
+			display:inline-block;
+			margin:0px;
+			color:blue;
+			text-align:center;
+			line-height:80px;
+			width:80px;
+			height:80px;
+			position: absolute;
+			transition: all 1.5s ; 
+		}
+		div.init{
+			background-color:rgba(100,100,100,0.1);
+			border-radius:100%;
+			display:inline-block;
+			margin:0px;
+			color:blue;
+			text-align:center;
+			line-height:80px;
+			width:80px;
+			height:80px;
+			position: absolute;
+			transition: all 1.5s ; 
+		}
+		p{
+			margin:auto;
+			font-size:38px;
+			font-weight:900;
+		}
+	</style>
+    <title>web考试</title>
+ </head>
+ <body>
+	
+ 	<script type="text/javascript">
+ 			var bodyWidth = window.innerWidth;
+ 			var bodyHeight = window.innerHeight;
+ 			var str1 = '计算机刘凌云，20203054。在天愿做比翼鸟，在地原为连理枝。天长地久有时尽，此恨绵绵无绝期。';
+			var str2 = '宜将剩勇追穷寇，不可沽名学霸王。天若有情天亦老，人间正道是沧桑。岐王宅里寻常见，崔九堂前几度闻。';
+			//定义二维数组str的行和列
+			var i = 0 , j = 0;
+ 			var divDom=[]; //定义一个数组存放所有的div
+ 			//定义div的宽度和高度
+ 			var w = 80 , h = 80;
+			var flag=0;//记录换哪首古诗
+			init(str1);
+			resetPositionDiv();
+			
+			//移动鼠标
+ 			document.body.onmousemove = document.body.ontouchmove = function(){
+				resetPositionDiv();
+			};
+			//点击屏幕
+ 			document.body.onclick = function (){
+ 				for(i = 0;i < str1.length;i++){
+					divDom[i].className = 'init';	
+ 					randPositionDiv(divDom[i]);
+ 				}
+ 			}
+			//双击屏幕换古诗
+			document.body.ondblclick = function(){
+				for(i = 0;i < str1.length;i++){					
+					document.body.removeChild(divDom[i]);			
+ 				}
+				if(flag % 2 === 0){
+					init(str2);
+				}else{
+					init(str1);
+				}
+				flag++;//flag加一配合flag % 2实现两首古诗相互切换
+				resetPositionDiv();
+				/*for(i = 0;i < str.length;i++){
+					divDom[i] = document.createElement('div');
+ 					addText(divDom[i],str[i]);
+					document.body.style.width = bodyWidth + 'px';
+					document.body.style.height = bodyHeight + 'px';
+					divDom[i].className = 'init';
+ 					randPositionDiv(divDom[i]);
+				}*/
+			}
+			
+ 			//初始化div
+ 			function init(str){
+ 				for(i = 0;i < str.length;i++){	
+ 					divDom[i] = document.createElement('div');
+ 					addText(divDom[i],str[i]);
+ 					divDom[i].style.width = w+'px';
+ 					divDom[i].style.height = h+'px';
+ 					document.body.appendChild(divDom[i]);
+ 				}
+				document.body.style.width = bodyWidth + 'px';
+				document.body.style.height = bodyHeight + 'px';
+ 			} //end of init
+
+			//重置位置
+			function resetPositionDiv(){
+				var key=1;//记录换行位置
+				for(i = 0;i < str1.length;i++){
+					if(i%8===0){
+						key++;
+					}
+ 					divDom[i].style.top = (14 * key) + '%';
+					//设置每八个字为一行
+					divDom[i].style.left = (8 * (i%8)) + '%';
+				}
+			}
+ 	
+ 			//随机定位
+ 			function randPositionDiv(dom){
+ 				//x和y分别实现div随机定位的横纵坐标(不会超出窗口)
+ 				//随机定位,由于div最多会超出body边界自己的宽度或高度的像素，所以要定位时要减去div宽度80和高度80
+ 				var x = Math.floor(Math.random() * (bodyWidth - w));
+ 				var y = Math.floor(Math.random() * (bodyHeight - h));
+ 				dom.style.left = x + 'px';
+ 				dom.style.top = y + 'px';
+ 			}
+ 	
+ 			//为dom元素添加内容
+ 			function addText(dom,str){
+ 				var pDom = document.createElement('p');
+ 				pDom.textContent = str;
+ 				dom.appendChild(pDom);
+ 			}
+ 		
+ 		</script>
+ </body>
+</html>
