@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>考试</title>
+  <style>
+  	body{
+		margin:0;
+		overflow:hidden;
+	}
+  	div{
+		/*0.1让每个div具有透明性质*/
+		background-color:rgba(100,100,100,0.1);
+		/* 设置为圆形 */
+		border-radius:100%;
+		/*让div可以在每一行有多个,挤满了则换下一行*/
+		display:inline-block;
+		margin:0px;
+		color:blue;
+		text-align:center;
+		line-height:100px;
+		position:absolute;
+		/*控制所有变化持续1.5秒*/
+		transition:all 1.5s;
+	}
+	p{
+		margin:auto;
+	}
+  </style>
+
+ </head>
+ <body>
+	<script>
+		var bodyWidth = window.innerWidth;
+		var bodyHeight = window.innerHeight;
+		var str = '绝代有佳人,幽居在空谷.自云良家子,零落依草木.';
+	
+		for(var i=0;i<str.length;i++){
+			var divDom = document.createElement('div');
+			//定义div的宽度和高度
+			var w = 100;
+			var h = 100;
+			divDom.style.width = w+'px';
+			divDom.style.height = h+'px';
+	
+			addP(divDom,str[i]);
+	
+			randPositionDiv(divDom);
+			/*设置鼠标放上去的事件,一定要用this*/
+			divDom.onmouseover = function(){
+				var x = Math.floor(Math.random() * (bodyWidth - w));
+				var y = Math.floor(Math.random() * (bodyHeight - h));
+				this.style.left = x + 'px';
+				this.style.top = y + 'px';
+			}
+			document.body.appendChild(divDom);
+		}//End of for
+	
+		function randPositionDiv(dom){
+			//x和y分别实现div随机定位的横纵坐标(不会超出窗口)
+			var x = Math.floor(Math.random() * (bodyWidth - w));
+			var y = Math.floor(Math.random() * (bodyHeight - h));
+			dom.style.left = x + 'px';
+			dom.style.top = y + 'px';	
+		}
+	
+		function addP(dom,s){
+			var pDom = document.createElement('p');
+			pDom.textContent = s;
+			dom.appendChild(pDom);
+		}
+	</script>
+ </body>
+</html>
